@@ -16,7 +16,7 @@ import com.revature.models.Answer;
 import com.revature.services.AnswerService;
 
 @RestController
-@RequestMapping("/answers")
+@RequestMapping("/answer")
 @CrossOrigin(
 		origins = { "http://localhost:8500" }, 
 		methods = { RequestMethod.GET, RequestMethod.PUT, 
