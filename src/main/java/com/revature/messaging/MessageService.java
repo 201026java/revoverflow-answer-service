@@ -8,48 +8,41 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
-import com.revature.repositories.AnswerRepository;
+import com.revature.services.AnswerService;
 
-
+@Service
 public class MessageService {
 	
 	private static Set<Integer> eventCache = new HashSet<>();
 	
 	@Autowired
-	private AnswerRepository answerDao;
+	private AnswerService answerService;
 
 	@Autowired
 	private KafkaTemplate<String, MessageEvent> kt;
 	
-	public void triggerAnswerEvent(MessageEvent event) {
+	public void triggerEvent(MessageEvent event) {
 		eventCache.add(event.hashCode());
-		
-		if(event.getOperation() == Operation.DELETE) {
-			kt.send("answer", event);
-		}
 		
 		kt.send("answer", event);
 	}
 	
 	@KafkaListener(topics = "answer")
 	public void processMessageEvent(MessageEvent event) {
+		if(event.getAnswer() == null) {
+			return;
+		}
 		if(eventCache.contains(event.hashCode())) {
 			eventCache.remove(event.hashCode());
 			return;
 		}
+			
+		System.out.println("___________________________________________________");
+		System.out.println("        I GOT A FISH");
+		System.out.println(event);
+		System.out.println("___________________________________________________");
 		
-		//Flashcard card = event.getFlashcard();
-		
-		switch(event.getOperation()) {
-		case CREATE:
-			//this.answerDao.save(card);
-			break;
-		case UPDATE:
-			//this.answerDao.save(card);
-			break;
-		case DELETE:
-			//this.answerDao.deleteById(card.getId());
-			break;
-		}
+		answerService.save(event.getAnswer());
+
 	}
 }

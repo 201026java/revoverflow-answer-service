@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.messaging.MessageEvent;
+import com.revature.messaging.MessageService;
 import com.revature.models.Answer;
 import com.revature.services.AnswerService;
 
@@ -27,6 +29,9 @@ public class AnswerController {
 	
 	@Autowired
 	AnswerService answerService;
+	
+	@Autowired
+	MessageService messageService;
 	
 /** @Author Natasha Poser 
  * 	@return This is the GetAnswers end-point. It retrieves all Answers in the database */
@@ -48,6 +53,7 @@ public class AnswerController {
 	/** Adds new answers and updates existing ones. */
 	@PostMapping
 	public Answer saveAnswer( @RequestBody Answer answer) {
+		messageService.triggerEvent(new MessageEvent(answer));
 		return answerService.save(answer);
 	}
 	
@@ -76,5 +82,6 @@ public class AnswerController {
 	public Answer getAnswerById(@PathVariable int id){
 		return answerService.getAnswerById(id);
 	}
+
 }
  
