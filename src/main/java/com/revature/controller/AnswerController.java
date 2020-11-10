@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.revature.messaging.MessageEvent;
@@ -81,6 +82,17 @@ public class AnswerController {
 	@GetMapping("/id/{id}")
 	public Answer getAnswerById(@PathVariable int id){
 		return answerService.getAnswerById(id);
+	}
+	
+	/** get all the answers by filter data
+	 * @param questionType = defines the question type (Revature or Location)
+	 * @param location = specific location if questionType is Location
+	 * @param id = the id of the user, or 0 if not specified
+	 * @return
+	 */
+	@GetMapping("/filter")
+	public Page<Answer> getAllAnswersByFilter(Pageable pageable, @RequestParam String questionType, @RequestParam String location, @RequestParam int id){	
+		return answerService.getAllAnswersByFilter(pageable, questionType, location, id);
 	}
 
 }
