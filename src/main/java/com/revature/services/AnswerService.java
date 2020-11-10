@@ -1,26 +1,35 @@
 package com.revature.services;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 
+import com.revature.clients.QuestionClient;
 import com.revature.models.Answer;
+import com.revature.models.Question;
 import com.revature.repositories.AnswerRepository;
 
 @Service
 public class AnswerService {
 	
- @Autowired
- AnswerRepository answerRepository;
+	@Autowired
+ 	AnswerRepository answerRepository;
  
-  /** @Author Natasha Poser 
-   * @return retrieves all answers matching a specific question ID*/
- public Page<Answer> getAnswerByQuestionId(Pageable pageable, int questionId){
-	 return answerRepository.getAnswerByQuestionId(pageable, questionId);
- }
+	@Autowired
+	QuestionClient questionClient;
+ 
+	/** @Author Natasha Poser 
+	 * @return retrieves all answers matching a specific question ID*/
+	public Page<Answer> getAnswerByQuestionId(Pageable pageable, int questionId){
+		return answerRepository.getAnswerByQuestionId(pageable, questionId);
+	}
  
 	
 	/** @Author James Walls */
@@ -54,6 +63,26 @@ public class AnswerService {
 		return answerRepository.findById(id)
 				// If no answer is found by the particular ID then HTTP Status is given 
 				.orElseThrow(() -> new HttpClientErrorException(HttpStatus.NOT_FOUND));
+	}
+	
+	
+	public Page<Answer> getAllAnswersByFilter(Pageable pageable, String questionType, String location, int id) {
+		List<Question> filteredQuestions = questionClient.getAllQuestionsByFilter(questionType, location, 0);
+		List<Answer> filteredAnswers = answerRepository.getAllNonPagedAnswersByUserId(id);
+		
+		List<Answer> finalFilter = new ArrayList<Answer>();
+		for (Answer a : filteredAnswers) {
+			for (Question q : filteredQuestions) {
+				if(a.getQuestionId() == q.getId()) {
+					finalFilter.add(a);
+					break;
+				}
+			}
+		}
+		
+		Page<Answer> filtered = new PageImpl<>(finalFilter, pageable, finalFilter.size());
+		
+		return filtered;
 	}
 	
 }
