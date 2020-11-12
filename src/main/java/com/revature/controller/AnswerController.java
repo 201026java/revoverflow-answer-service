@@ -77,10 +77,14 @@ public class AnswerController {
 		return answerService.getAnswerById(id);
 	}
 	
-	/** get all the answers by filter data
-	 * @param questionType = defines the question type (Revature or Location)
-	 * @param location = specific location if questionType is Location
-	 * @param id = the id of the user, or 0 if not specified
+	/** @Author Mark Alsip 
+	 * get all the answers by filter data
+	 * this endpoint has to hit the quesiton service to get quesiton data,
+	 * it then does a manual join table (with for loops) to get the filtered info.
+	 * Example URL: /filter?questionType=Revature&location=none&id=1
+	 * @param questionType = defines the question type (Revature or Location). Required.
+	 * @param location = specific location if questionType is Location. ignored if questionType is Revature.
+	 * @param id = the id of the user, required to be > 0.
 	 * @return
 	 */
 	@GetMapping("/filter")
