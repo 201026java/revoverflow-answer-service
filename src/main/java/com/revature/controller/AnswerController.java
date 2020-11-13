@@ -3,13 +3,11 @@ package com.revature.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,12 +18,7 @@ import com.revature.services.AnswerService;
 
 @RestController
 @RequestMapping("/answer")
-@CrossOrigin(
-		origins = { "http://localhost:8500" }, 
-		methods = { RequestMethod.GET, RequestMethod.PUT, 
-					RequestMethod.PATCH, RequestMethod.POST },
-		allowedHeaders = { "content-type" }
-	)
+
 public class AnswerController {
 	
 	@Autowired
@@ -84,10 +77,14 @@ public class AnswerController {
 		return answerService.getAnswerById(id);
 	}
 	
-	/** get all the answers by filter data
-	 * @param questionType = defines the question type (Revature or Location)
-	 * @param location = specific location if questionType is Location
-	 * @param id = the id of the user, or 0 if not specified
+	/** @Author Mark Alsip 
+	 * get all the answers by filter data
+	 * this endpoint has to hit the quesiton service to get quesiton data,
+	 * it then does a manual join table (with for loops) to get the filtered info.
+	 * Example URL: /filter?questionType=Revature&location=none&id=1
+	 * @param questionType = defines the question type (Revature or Location). Required.
+	 * @param location = specific location if questionType is Location. ignored if questionType is Revature.
+	 * @param id = the id of the user, required to be > 0.
 	 * @return
 	 */
 	@GetMapping("/filter")

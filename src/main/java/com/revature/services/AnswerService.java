@@ -65,7 +65,18 @@ public class AnswerService {
 				.orElseThrow(() -> new HttpClientErrorException(HttpStatus.NOT_FOUND));
 	}
 	
-	
+	/** @Author Mark Alsip
+	 * This monster was born out of separating the tables to different services,
+	 * which means there is no relational database management for our services.
+	 * So I made this, which pull the table data from questions that is filtered
+	 * by specifications not included in the answer table, and the data pulled 
+	 * from the answer table which pulls all answers by a user.
+	 * 
+	 * After fetching, using for loops I manually create a join table and save it in a list,
+	 * which is THEN converted to a page. Like magic.
+	 * 
+	 * @return even though I use Lists a lot for this method, it does return a page with the filtered data
+	 */
 	public Page<Answer> getAllAnswersByFilter(Pageable pageable, String questionType, String location, int id) {
 		List<Question> filteredQuestions = questionClient.getAllQuestionsByFilter(questionType, location, 0);
 		List<Answer> filteredAnswers = answerRepository.getAllNonPagedAnswersByUserId(id);
