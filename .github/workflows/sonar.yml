@@ -13,12 +13,12 @@ jobs:
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
-    - name: Set up JDK 1.11
+    - name: Set up JDK 1.8
       uses: actions/setup-java@v1
       with:
-        java-version: 1.11
-      - name: Analyze Sonar
-        run: mvn verify sonar:sonar
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        java-version: 1.8
+    - name: Analyze Sonar
+      run: mvn verify sonar:sonar
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
