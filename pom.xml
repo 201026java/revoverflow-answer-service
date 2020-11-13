@@ -24,6 +24,7 @@
   		<sonar.organization>201026java</sonar.organization>
   		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
   		<sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+  		<sonar.exclusions>src/**/models/**/*</sonar.exclusions>
 	</properties> 
 
 	<dependencies>
