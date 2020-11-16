@@ -132,8 +132,7 @@
 				<configuration>
 					<outputDirectory>${coverage.reports.dir}</outputDirectory>
 					<excludes>
-						<exclude>**/entities/**</exclude>
-						<exclude>**/DTOs/**</exclude>
+						<exclude>**/models/**</exclude>
 					</excludes>
 				</configuration>
 				<executions>
