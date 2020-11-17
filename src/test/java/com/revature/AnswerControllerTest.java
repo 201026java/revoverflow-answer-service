@@ -12,7 +12,13 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+<<<<<<< HEAD
 import org.junit.Before;
+=======
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.Before;
+//import org.junit.jupiter.api.Test;
+>>>>>>> 9a5b55a... Modified imports in answer controller test
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
