@@ -51,7 +51,11 @@ public class AnswerControllerTest {
 	static User u1;
 	@Autowired
 	private ObjectMapper mapper;
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> edd15a5... Added application.properties for testing to disable Consul
 	@Autowired
 	private MockMvc mvc;
 
@@ -71,8 +75,8 @@ public class AnswerControllerTest {
 	/** @author ken */
 =======
 	
-	@BeforeEach                          
-    public void setUp() {  
+	@Before
+	public void setUp() {  
        u1 = new User(12,26,0,true,null,"admin@rss.com","Admin","Admin");
    	   mvc = MockMvcBuilders
    				.webAppContextSetup(context)
@@ -83,8 +87,13 @@ public class AnswerControllerTest {
 	/**@author ken*/
 >>>>>>> f913869... Changed @Before to @BeforeEach in tests
 	@Test
+<<<<<<< HEAD
 	@WithMockUser(username = "user@rss.com", password = "12345", authorities = "USER")
 	public void testGetAnswers() throws Exception {
+=======
+	@WithMockUser(username="user@rss.com", password="12345", authorities="USER")
+	public void testGetAnswers() throws Exception{
+>>>>>>> edd15a5... Added application.properties for testing to disable Consul
 		List<Answer> answers = new ArrayList<>();
 		answers.add(new Answer(1, 1, 1, "Test content", LocalDateTime.MIN, LocalDateTime.MIN));
 		Page<Answer> pageResult = new PageImpl<>(answers);
@@ -98,7 +107,11 @@ public class AnswerControllerTest {
 
 	/** @author Natasha Poser */
 	@Test
+<<<<<<< HEAD
 	@WithMockUser(username = "user@rss.com", password = "12345", authorities = "USER")
+=======
+	@WithMockUser(username = "user@rss.com", password = "12345",authorities="USER")
+>>>>>>> edd15a5... Added application.properties for testing to disable Consul
 	public void testGetAnswerByQuestionId() throws Exception {
 		List<Answer> answers = new ArrayList<>();
 		answers.add(new Answer(1, 1, 1, "Test content", LocalDateTime.MIN, LocalDateTime.MIN));
