@@ -2,11 +2,14 @@ package com.revature;
 
 import static org.hamcrest.CoreMatchers.is;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 >>>>>>> 643c4cf... Service and controller tests are passing with mock users added
+=======
+>>>>>>> 400c48f... Fix kafka test inteference issue.
 import static org.mockito.Mockito.when;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -49,6 +52,7 @@ import com.revature.services.AnswerService;
 public class AnswerControllerTest {
 
 	static User u1;
+<<<<<<< HEAD
 	@Autowired
 	private ObjectMapper mapper;
 <<<<<<< HEAD
@@ -56,6 +60,12 @@ public class AnswerControllerTest {
 =======
 	
 >>>>>>> edd15a5... Added application.properties for testing to disable Consul
+=======
+
+	@Autowired
+	private ObjectMapper mapper;
+
+>>>>>>> 400c48f... Fix kafka test inteference issue.
 	@Autowired
 	private MockMvc mvc;
 
@@ -65,14 +75,20 @@ public class AnswerControllerTest {
 	@MockBean
 	private AnswerService answerService;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 	@Before
+=======
+
+	@BeforeEach
+>>>>>>> 400c48f... Fix kafka test inteference issue.
 	public void setUp() {
 		u1 = new User(12, 26, 0, true, null, "admin@rss.com", "Admin", "Admin");
 		mvc = MockMvcBuilders.webAppContextSetup(context).apply(springSecurity()).build();
 	}
 
 	/** @author ken */
+<<<<<<< HEAD
 =======
 	
 	@Before
@@ -94,6 +110,11 @@ public class AnswerControllerTest {
 	@WithMockUser(username="user@rss.com", password="12345", authorities="USER")
 	public void testGetAnswers() throws Exception{
 >>>>>>> edd15a5... Added application.properties for testing to disable Consul
+=======
+	@Test
+	@WithMockUser(username = "user@rss.com", password = "12345", authorities = "USER")
+	public void testGetAnswers() throws Exception {
+>>>>>>> 400c48f... Fix kafka test inteference issue.
 		List<Answer> answers = new ArrayList<>();
 		answers.add(new Answer(1, 1, 1, "Test content", LocalDateTime.MIN, LocalDateTime.MIN));
 		Page<Answer> pageResult = new PageImpl<>(answers);
@@ -108,10 +129,14 @@ public class AnswerControllerTest {
 	/** @author Natasha Poser */
 	@Test
 <<<<<<< HEAD
+<<<<<<< HEAD
 	@WithMockUser(username = "user@rss.com", password = "12345", authorities = "USER")
 =======
 	@WithMockUser(username = "user@rss.com", password = "12345",authorities="USER")
 >>>>>>> edd15a5... Added application.properties for testing to disable Consul
+=======
+	@WithMockUser(username = "user@rss.com", password = "12345", authorities = "USER")
+>>>>>>> 400c48f... Fix kafka test inteference issue.
 	public void testGetAnswerByQuestionId() throws Exception {
 		List<Answer> answers = new ArrayList<>();
 		answers.add(new Answer(1, 1, 1, "Test content", LocalDateTime.MIN, LocalDateTime.MIN));
