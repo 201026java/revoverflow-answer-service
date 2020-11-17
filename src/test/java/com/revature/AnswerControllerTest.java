@@ -44,7 +44,6 @@ import com.revature.services.AnswerService;
 public class AnswerControllerTest {
 
 	static User u1;
-
 	@Autowired
 	private ObjectMapper mapper;
 
