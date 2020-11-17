@@ -2,7 +2,7 @@ name: CI/CD
 on:
   push:
     branches:
-      - main
+      - kubernetes
   pull_request:
     types: [opened, synchronize, reopened]
 env:
@@ -101,7 +101,11 @@ jobs:
           aws eks --region ${{ secrets.AWS_REGION }} update-kubeconfig --profile p3 --name $ECR_REPOSITORY_PREFIX
           kubectl --namespace default set image deployment/ro-answer-deployment ro-answer-service=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
 <<<<<<< HEAD
+<<<<<<< HEAD
           kubectl --namespace default rollout status deploy/ro-answer-deployment
+=======
+          kubectl --namespace default rollout status deploy/ro-answer-deployment
+>>>>>>> a2154eb... Updated build yaml with kubernetes configuration
 =======
           kubectl --namespace default rollout status deploy/ro-answer-deployment
 >>>>>>> a2154eb... Updated build yaml with kubernetes configuration
