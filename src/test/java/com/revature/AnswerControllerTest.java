@@ -4,13 +4,11 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.when;
-import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
-=======
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
+=======
 import static org.mockito.Mockito.when;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -38,10 +36,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
-import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -117,7 +111,7 @@ public class AnswerControllerTest {
 @AutoConfigureMockMvc
 public class AnswerControllerTest {
 
-//	static User u1;
+	static User u1;
 	
 	@Autowired
     private ObjectMapper mapper;
@@ -133,16 +127,16 @@ public class AnswerControllerTest {
 	
 	@Before                          
     public void setUp() {  
-      u1 = new User(12,26,0,true,null,"admin@rss.com","Admin","Admin");
+       u1 = new User(12,26,0,true,null,"admin@rss.com","Admin","Admin");
    	   mvc = MockMvcBuilders
    				.webAppContextSetup(context)
-  				.apply(springSecurity())
+   				.apply(springSecurity())
    				.build();
-   }
+    }
 	
 	/**@author ken*/
 	@Test
-	@WithMockUser(username = "user@rss.com", password = "Password123!", authorities = "user")
+    @WithMockUser(username = "user@rss.com", password = "12345", authorities = "USER")
 	public void testGetAnswers() throws Exception{
 		List<Answer> answers = new ArrayList<>();
 		answers.add(new Answer(1, 1, 1, "Test content", LocalDateTime.MIN, LocalDateTime.MIN));
@@ -160,8 +154,7 @@ public class AnswerControllerTest {
 
 	/** @author Natasha Poser */
 	@Test
-	@WithMockUser(username = "user@rss.com", password = "12345",authorities="USER")
-	@WithMockUser(username = "user@rss.com", password = "12345", authorities = "USER")
+    @WithMockUser(username = "user@rss.com", password = "12345", authorities = "USER")
 	public void testGetAnswerByQuestionId() throws Exception {
 		List<Answer> answers = new ArrayList<>();
 		answers.add(new Answer(1, 1, 1, "Test content", LocalDateTime.MIN, LocalDateTime.MIN));
@@ -212,7 +205,7 @@ public class AnswerControllerTest {
 	
 	/** @author ken */
 	@Test
-	@WithMockUser(username = "user@rss.com", password = "Password123!", authorities = "user")
+	@WithMockUser(username = "user@rss.com", password = "12345", authorities = "USER")
 	public void testSaveAnswer() throws Exception {
 		Answer answer = new Answer(1, 1, 1, "test content", LocalDateTime.MIN, LocalDateTime.MIN);
 
@@ -234,7 +227,7 @@ public class AnswerControllerTest {
 	
 	/**@author ken*/
 	@Test
-	@WithMockUser(username = "user@rss.com", password = "Password123!", authorities = "user")
+	@WithMockUser(username = "user@rss.com", password = "12345", authorities = "USER")
 	public void testGetAnswerByUserId() throws Exception {
 		List<Answer> answers = new ArrayList<>();
 		answers.add(new Answer(1, 1, 1, "Test content", LocalDateTime.MIN, LocalDateTime.MIN));
@@ -271,7 +264,7 @@ public class AnswerControllerTest {
 	
 	/** @author Natasha Poser */
 	@Test
-//    @WithMockUser(username = "user@rss.com", password = "Password123!", authorities = "user")
+    @WithMockUser(username = "user@rss.com", password = "12345", authorities = "USER")
 	public void testGetAnswerById() throws Exception {
 		Answer answer = new Answer(1, 1, 1, "Test content", LocalDateTime.MIN, LocalDateTime.MIN);
 		
