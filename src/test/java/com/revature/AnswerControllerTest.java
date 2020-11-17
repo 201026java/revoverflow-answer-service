@@ -1,12 +1,6 @@
 package com.revature;
 
 import static org.hamcrest.CoreMatchers.is;
-<<<<<<< HEAD
-=======
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertTrue;
->>>>>>> 643c4cf... Service and controller tests are passing with mock users added
 import static org.mockito.Mockito.when;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -25,6 +19,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,7 +60,6 @@ public class AnswerControllerTest {
 
 	@MockBean
 	private AnswerService answerService;
-<<<<<<< HEAD
 
 	@Before
 	public void setUp() {
@@ -74,19 +68,6 @@ public class AnswerControllerTest {
 	}
 
 	/** @author ken */
-=======
-	
-	@BeforeEach                          
-    public void setUp() {  
-       u1 = new User(12,26,0,true,null,"admin@rss.com","Admin","Admin");
-   	   mvc = MockMvcBuilders
-   				.webAppContextSetup(context)
-   				.apply(springSecurity())
-   				.build();
-    }
-	
-	/**@author ken*/
->>>>>>> f913869... Changed @Before to @BeforeEach in tests
 	@Test
 	@WithMockUser(username = "user@rss.com", password = "12345", authorities = "USER")
 	public void testGetAnswers() throws Exception {
