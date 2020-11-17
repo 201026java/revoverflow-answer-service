@@ -52,7 +52,7 @@ public class AnswerControllerTest {
 	static User u1;
 	
 	@Autowired
-    private ObjectMapper mapper;
+	private ObjectMapper mapper;
 	
 	@Autowired
 	private MockMvc mvc;
@@ -63,8 +63,8 @@ public class AnswerControllerTest {
 	@MockBean
 	private AnswerService answerService;
 	
-	@BeforeEach                          
-    public void setUp() {  
+	@Before
+	public void setUp() {  
        u1 = new User(12,26,0,true,null,"admin@rss.com","Admin","Admin");
    	   mvc = MockMvcBuilders
    				.webAppContextSetup(context)
@@ -74,7 +74,7 @@ public class AnswerControllerTest {
 	
 	/**@author ken*/
 	@Test
-    @WithMockUser(username = "user@rss.com", password = "12345", authorities = "USER")
+	@WithMockUser(username="user@rss.com", password="12345", authorities="USER")
 	public void testGetAnswers() throws Exception{
 		List<Answer> answers = new ArrayList<>();
 		answers.add(new Answer(1, 1, 1, "Test content", LocalDateTime.MIN, LocalDateTime.MIN));
@@ -92,7 +92,7 @@ public class AnswerControllerTest {
 
 	/** @author Natasha Poser */
 	@Test
-    @WithMockUser(username = "user@rss.com", password = "12345", authorities = "USER")
+	@WithMockUser(username = "user@rss.com", password = "12345",authorities="USER")
 	public void testGetAnswerByQuestionId() throws Exception {
 		List<Answer> answers = new ArrayList<>();
 		answers.add(new Answer(1, 1, 1, "Test content", LocalDateTime.MIN, LocalDateTime.MIN));
@@ -150,7 +150,7 @@ public class AnswerControllerTest {
 	
 	/** @author Natasha Poser */
 	@Test
-    @WithMockUser(username = "user@rss.com", password = "12345", authorities = "USER")
+	@WithMockUser(username = "user@rss.com", password = "12345", authorities = "USER")
 	public void testGetAnswerById() throws Exception {
 		Answer answer = new Answer(1, 1, 1, "Test content", LocalDateTime.MIN, LocalDateTime.MIN);
 		
