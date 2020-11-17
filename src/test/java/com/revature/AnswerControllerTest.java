@@ -43,8 +43,10 @@ import com.revature.services.AnswerService;
 public class AnswerControllerTest {
 
 	static User u1;
+
 	@Autowired
 	private ObjectMapper mapper;
+
 	@Autowired
 	private MockMvc mvc;
 
@@ -53,7 +55,6 @@ public class AnswerControllerTest {
 
 	@MockBean
 	private AnswerService answerService;
-
 
 	@Before
 	public void setUp() {
