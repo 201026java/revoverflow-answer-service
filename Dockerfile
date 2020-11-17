@@ -28,4 +28,7 @@ COPY src /answerservice/src
 #RUN mvn package
 RUN mvn -B -f /answerservice/pom.xml clean install
 #RUN mvn -B -f /tmp/pom.xml dependency:resolve
+
+VOLUME /root/.m2
+
 ENTRYPOINT ["java", "-jar", "/root/.m2/repository/com/revature/answerservice/0.0.1-SNAPSHOT/answerservice-0.0.1-SNAPSHOT.jar"]

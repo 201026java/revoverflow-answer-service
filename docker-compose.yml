@@ -1,8 +1,8 @@
 version: '3.1'
 
 services:
-     revoverflow-answer-service:
-         image: 'revoverflow-answer-service:latest'
+     ro-answer-service:
+         image: 'ro-answer-service:latest'
          build:
              context: .
              dockerfile: Dockerfile
