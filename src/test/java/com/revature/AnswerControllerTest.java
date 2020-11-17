@@ -12,10 +12,14 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+<<<<<<< HEAD
 import org.junit.Before;
 import org.junit.Before;
 import org.junit.Test;
+=======
+>>>>>>> dd852fe... Fixing answer tests
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
