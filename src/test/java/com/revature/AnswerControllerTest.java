@@ -65,14 +65,7 @@ public class AnswerControllerTest {
 	@MockBean
 	private AnswerService answerService;
 
-	@Before
-	public void setUp() {
-		u1 = new User(12, 26, 0, true, null, "admin@rss.com", "Admin", "Admin");
-		mvc = MockMvcBuilders.webAppContextSetup(context).apply(springSecurity()).build();
-	}
-
-	/** @author ken */
-	
+	/** @author ken */	
 	@Before
 	public void setUp() {
 		u1 = new User(12, 26, 0, true, null, "admin@rss.com", "Admin", "Admin");
