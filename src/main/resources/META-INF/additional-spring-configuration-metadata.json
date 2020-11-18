@@ -13,5 +13,10 @@
     "name": "environment.rss.user.url",
     "type": "java.lang.String",
     "description": "A description for 'environment.rss.user.url'"
+  },
+  {
+    "name": "environment.rss.question.url",
+    "type": "java.lang.String",
+    "description": "A description for 'environment.rss.question.url'"
   }
 ]}
