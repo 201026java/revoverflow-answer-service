@@ -12,9 +12,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.Before;
-//import org.junit.jupiter.api.Test;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -45,7 +43,6 @@ import com.revature.services.AnswerService;
 public class AnswerControllerTest {
 
 	static User u1;
-
 	@Autowired
 	private ObjectMapper mapper;
 
@@ -64,7 +61,7 @@ public class AnswerControllerTest {
 		mvc = MockMvcBuilders.webAppContextSetup(context).apply(springSecurity()).build();
 	}
 
-	/** @author ken */
+	/**@author ken*/
 	@Test
 	@WithMockUser(username = "user@rss.com", password = "12345", authorities = "USER")
 	public void testGetAnswers() throws Exception {
