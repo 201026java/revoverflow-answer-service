@@ -69,9 +69,16 @@ public class AnswerControllerTest {
 
 	@MockBean
 	private AnswerService answerService;
+
+	@Before
+	public void setUp() {
+		u1 = new User(12, 26, 0, true, null, "admin@rss.com", "Admin", "Admin");
+		mvc = MockMvcBuilders.webAppContextSetup(context).apply(springSecurity()).build();
+	}
+
+	/** @author ken */
 	
 	@Before
-<<<<<<< HEAD
 	public void setUp() {
 		u1 = new User(12, 26, 0, true, null, "admin@rss.com", "Admin", "Admin");
 		mvc = MockMvcBuilders.webAppContextSetup(context).apply(springSecurity()).build();
@@ -81,19 +88,6 @@ public class AnswerControllerTest {
 	@Test
 	@WithMockUser(username = "user@rss.com", password = "12345", authorities = "USER")
 	public void testGetAnswers() throws Exception {
-=======
-	public void setUp() {  
-       u1 = new User(12,26,0,true,null,"admin@rss.com","Admin","Admin");
-   	   mvc = MockMvcBuilders
-   				.webAppContextSetup(context)
-   				.apply(springSecurity())
-   				.build();
-    }
-	
-	/**@author ken*/
-	@WithMockUser(username="user@rss.com", password="12345", authorities="USER")
-	public void testGetAnswers() throws Exception{
->>>>>>> fccf63d... rebasing
 		List<Answer> answers = new ArrayList<>();
 		answers.add(new Answer(1, 1, 1, "Test content", LocalDateTime.MIN, LocalDateTime.MIN));
 		Page<Answer> pageResult = new PageImpl<>(answers);
