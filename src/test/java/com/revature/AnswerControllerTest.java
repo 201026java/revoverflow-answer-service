@@ -90,7 +90,6 @@ public class AnswerControllerTest {
 		List<Answer> answers = new ArrayList<>();
 		answers.add(new Answer(1, 1, 1, "Test content", LocalDateTime.MIN, LocalDateTime.MIN));
 		Page<Answer> pageResult = new PageImpl<>(answers);
-
 		when(answerService.getAnswerByQuestionId(Mockito.any(Pageable.class), Mockito.anyInt())).thenReturn(pageResult);
 
 		mvc.perform(get("/answer/1").accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
