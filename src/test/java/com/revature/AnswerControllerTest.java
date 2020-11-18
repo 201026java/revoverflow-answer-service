@@ -48,7 +48,7 @@ import com.revature.services.AnswerService;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = AnswerServiceApplication.class)
 @AutoConfigureMockMvc
 public class AnswerControllerTest {
-
+	
 	static User u1;
 	@Autowired
 	private ObjectMapper mapper;

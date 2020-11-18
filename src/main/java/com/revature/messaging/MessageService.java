@@ -30,7 +30,6 @@ public class MessageService {
 	 */
 	public void triggerEvent(MessageEvent event) {
 		eventCache.add(event.hashCode());
-		
 		kt.send("answer", event);
 	}
 	
