@@ -51,7 +51,7 @@ public class AnswerController {
 	@PostMapping
 	@PreAuthorize("hasAuthority('USER')")
 	public Answer saveAnswer( @RequestBody Answer answer) {
-		messageService.triggerEvent(new MessageEvent(answer));
+		//messageService.triggerEvent(new MessageEvent(answer));
 		return answerService.save(answer);
 	}
 	
