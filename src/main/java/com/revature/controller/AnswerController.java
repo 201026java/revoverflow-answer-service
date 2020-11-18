@@ -25,7 +25,7 @@ public class AnswerController {
 	@Autowired
 	AnswerService answerService;
 	
-	@Autowired
+	//@Autowired
 	MessageService messageService;
 	
 /** @Author Natasha Poser 
