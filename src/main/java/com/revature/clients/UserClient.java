@@ -7,10 +7,10 @@ import com.revature.models.User;
 
 
 
-@FeignClient(name = "ro-user-service")
+@FeignClient(name = "ro-user-service", url = "${environment.rss.user.url}")
 public interface UserClient {
 
-	@PostMapping("/user/user/authorize")
+	@PostMapping("/user/authorize")
 	public User authUser(User user);
 	
 }
