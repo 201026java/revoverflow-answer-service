@@ -10,7 +10,7 @@ import com.revature.models.User;
 @FeignClient(name = "ro-user-service")
 public interface UserClient {
 
-	@PostMapping("/user/user/authorize")
+	@PostMapping("/user/authorize")
 	public User authUser(User user);
 	
 }
