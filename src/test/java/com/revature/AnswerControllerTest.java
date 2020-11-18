@@ -52,7 +52,6 @@ public class AnswerControllerTest {
 	static User u1;
 	@Autowired
 	private ObjectMapper mapper;
-
 	@Autowired
 	private ObjectMapper mapper;
 
