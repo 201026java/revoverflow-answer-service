@@ -21,8 +21,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,8 +80,12 @@ public class AnswerControllerTest {
 	@Before
 =======
 
+<<<<<<< HEAD
 	@BeforeEach
 >>>>>>> 400c48f... Fix kafka test inteference issue.
+=======
+	@Before
+>>>>>>> 9262c47... Fixed test issues.
 	public void setUp() {
 		u1 = new User(12, 26, 0, true, null, "admin@rss.com", "Admin", "Admin");
 		mvc = MockMvcBuilders.webAppContextSetup(context).apply(springSecurity()).build();
