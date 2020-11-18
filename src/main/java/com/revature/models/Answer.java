@@ -34,6 +34,7 @@ public class Answer {
 	private int questionId;
 
 	@NotBlank(message = "Content must have a string value")
+	@Column(nullable = false, length=64000)
 	private String content;
 
 	// add the not null check in the service layer
