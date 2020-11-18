@@ -10,7 +10,7 @@ import com.revature.models.User;
 @FeignClient(name = "RevOverflow-UserService")
 public interface UserClient {
 
-	@PostMapping("/authorize")
+	@PostMapping("/user/authorize")
 	public User authUser(User user);
 	
 }
